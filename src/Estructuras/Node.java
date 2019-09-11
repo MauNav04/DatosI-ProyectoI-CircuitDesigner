@@ -1,27 +1,33 @@
 package Estructuras;
 
 public class Node {
-    private Object data;
+
+    private Object info;
     private Node next;
 
-    public Node(Object data){
-        this.next = null;
-        this.data = data;
+    public Node() {
+        info = null;
+        next = null;
     }
 
-    public Object getData(){
-        return this.data;
+    public Node(Object o, Node n) {
+        setInfo(o);
+        setNext(n);
     }
 
-    public void setData(Object data){
-        this.data = data;
+    public void setInfo(Object o) {
+        info = o;
     }
 
-    public Node getNext(){
-        return this.next;
+    public void setNext(Node n) {
+        next = n;
     }
 
-    public void setNext(Node node){
-        this.next = node;
+    public Object getInfo() {
+        return info;
+    }
+
+    public Node getNext() {
+        return next;
     }
 }
