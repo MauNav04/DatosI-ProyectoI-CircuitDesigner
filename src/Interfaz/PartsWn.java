@@ -4,13 +4,15 @@ import Estructuras.LinkedLists;
 import Estructuras.Node;
 
 import javafx.geometry.Insets;
+import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 
 
+
 public class PartsWn {
-    public Image andImage = new Image("images/and.png");
+    Image andImage = new Image("images/and.png");
     Image orImage = new Image("images/or.png");
     Image nandImage = new Image("images/nand.png");
     Image norImage = new Image("images/nor.png");
@@ -20,9 +22,6 @@ public class PartsWn {
 
     LinkedLists lista1=new LinkedLists();
 
-    public void main(String[] args) {
-
-    }
 
     public VBox addVBox() {
         this.lista1.insert(xorImage);
@@ -49,7 +48,9 @@ public class PartsWn {
 
         }
 
-
+        Button readyBtn = new Button("Test Circuit");
+        readyBtn.setPrefSize(150,20);
+        vbox.getChildren().add(readyBtn);
 
         return vbox;
     }
