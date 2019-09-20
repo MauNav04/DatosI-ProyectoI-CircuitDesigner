@@ -2,12 +2,17 @@ package Interfaz;
 
 import Estructuras.LinkedLists;
 import Estructuras.Node;
+import Logica.LogicGate;
+import Logica.LogicGate.*;
 
 import javafx.geometry.Insets;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
+
 
 
 
@@ -50,6 +55,25 @@ public class PartsWn {
 
         Button readyBtn = new Button("Test Circuit");
         readyBtn.setPrefSize(150,20);
+
+        readyBtn.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                LogicGate comp0 = new LogicGate();
+                LogicGate comp1 = new LogicGate();
+                LogicGate comp2 = new LogicGate();
+                LogicGate comp3 = new LogicGate();
+
+                comp1.connection(comp2);
+                comp3.connection(comp2);
+
+                LogicGate a = (LogicGate) comp1.connections.get(0);
+                System.out.println(a.gateID);
+
+            }
+        });
+
+
         vbox.getChildren().add(readyBtn);
 
         return vbox;

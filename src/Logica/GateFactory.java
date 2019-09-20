@@ -6,10 +6,6 @@ public class GateFactory extends AbstractFactory{
             return null;
         }
 
-        if (gate.equalsIgnoreCase("AND")){
-            return new AndGate();
-        }
-
         return null;
     }
 

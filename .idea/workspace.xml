@@ -30,10 +30,10 @@
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
+    <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\fantu\Desktop\Documentos de la U\Datos I\Proyecto I  - Circuit Designer\Proyecto\Proyecto Circuit Designer\src" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
+    <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\fantu\Desktop\Documentos de la U\Datos I\Proyecto I  - Circuit Designer\Proyecto\Proyecto Circuit Designer\src" />
     </key>
   </component>
@@ -99,7 +99,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>

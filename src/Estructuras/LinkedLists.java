@@ -22,6 +22,24 @@ public class LinkedLists {
         this.size++;
     }
 
+    public void lastInsert (Object object){
+        Node tmp = this.first;
+        Node current =  new Node (object, null);
+        if (tmp != null){
+            while (tmp.getNext() != null){
+                tmp = tmp.getNext();
+            }
+            current.setNext(null);
+            tmp.setNext(current);
+        }
+        else{
+            current.setNext(first);
+            first = current;
+        }
+
+        this.size ++;
+    }
+
     /**
      * Elimina el primer elemento de una lista enlazada
      *
@@ -68,7 +86,6 @@ public class LinkedLists {
 
     /**
      * Devuelve el objeto contenido en cierta posición de la lista
-     *
      * @param n posición del elemento
      * @return el objeto en esa posición
      */
