@@ -3,7 +3,6 @@ package Interfaz;
 import Estructuras.LinkedLists;
 import Estructuras.Node;
 import Logica.LogicGate;
-import Logica.LogicGate.*;
 
 import javafx.geometry.Insets;
 import javafx.event.ActionEvent;
@@ -67,11 +66,13 @@ public class PartsWn {
                 comp1.connection(comp2);
                 comp3.connection(comp2);
 
-                LogicGate a = (LogicGate) comp1.connections.get(0);
+                LogicGate a = (LogicGate) comp2.connections.get(0);
                 System.out.println(a.gateID);
 
             }
         });
+
+
 
 
         vbox.getChildren().add(readyBtn);
