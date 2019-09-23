@@ -49,9 +49,22 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="Application.Window">
     <configuration name="DragAndDrop" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Interfaz.DragAndDrop" />
+      <module name="Proyecto Circuit Designer" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Interfaz.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GraphicGate" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Interfaz.GraphicGate" />
       <module name="Proyecto Circuit Designer" />
       <extension name="coverage">
         <pattern>
@@ -87,12 +100,14 @@
       <item itemvalue="Application.Main" />
       <item itemvalue="Application.Window" />
       <item itemvalue="Application.DragAndDrop" />
+      <item itemvalue="Application.GraphicGate" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Window" />
+        <item itemvalue="Application.GraphicGate" />
         <item itemvalue="Application.Main" />
         <item itemvalue="Application.DragAndDrop" />
-        <item itemvalue="Application.Window" />
       </list>
     </recent_temporary>
   </component>

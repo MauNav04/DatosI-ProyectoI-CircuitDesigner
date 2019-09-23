@@ -1,5 +1,6 @@
 import Estructuras.LinkedLists;
 import Interfaz.DragAndDrop;
+import Interfaz.GraphicGate;
 import Interfaz.PartsWn;
 
 import Logica.LogicGate;
@@ -10,6 +11,7 @@ import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Group;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Menu;
@@ -23,6 +25,8 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+
+import java.util.Collection;
 
 
 public class Main extends Application {
@@ -69,8 +73,11 @@ public class Main extends Application {
         Menu infoMenu = new Menu("Info");
         infoMenu.getItems().add(new MenuItem("Credits"));
 
+        Menu settingsMenu = new Menu("Settings");
+        settingsMenu.getItems().add(new MenuItem("Input amount"));
+
         MenuBar menuBar = new MenuBar();
-        menuBar.getMenus().addAll(infoMenu);
+        menuBar.getMenus().addAll(infoMenu,settingsMenu);
         mainPane.setTop(menuBar);
 
         window.setScene(mainScene);
@@ -123,7 +130,9 @@ public class Main extends Application {
                             System.out.println("SelecY: "+selectedY);
 
                            if(selectedX < 577 && selectedY < 635) {
-                               placeImage(imagen, selectedX, selectedY);
+                               //placeImage(imagen, selectedX, selectedY);
+                               GraphicGate gate1 = new GraphicGate(imagen,2,selectedX,selectedY);
+                               center.getChildren().addAll(gate1.CreateGate());
                            }
                            else{
                                System.out.println("Fuera del rango");
