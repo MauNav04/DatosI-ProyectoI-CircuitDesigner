@@ -32,11 +32,25 @@ public class GraphicGate {
         Group group = new Group();
 
         ImageView image = new ImageView(this.gateImage);
-        Button button1 = new Button("Buton 1");
-        button1.setLayoutY(20);
-        Button button2 = new Button("Button 2");
 
-        group.getChildren().addAll(image,button1,button2);
+
+        int ancho = 42;
+        int total = ancho/inputAmount;
+        int pos_Y = 0;
+
+        group.getChildren().add(image);
+
+        for (int i = 0; i < inputAmount; i++){
+            Button button = new Button("Inp");
+            System.out.println("Pos Y:" + Integer.toString(pos_Y));
+            button.setLayoutY(pos_Y);
+
+            group.getChildren().add(button);
+
+            pos_Y = pos_Y + total*2;
+        }
+
+        System.out.println("trama pura");
         group.setLayoutX(this.Coord_X);
         group.setLayoutY(this.Coord_Y);
 
