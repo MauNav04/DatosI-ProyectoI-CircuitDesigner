@@ -43,6 +43,8 @@ public class Main extends Application {
     Image xorImage = new Image("images/xor.png");
     double mousePosX;
     double mousePosY;
+    int inputAmount = 3;
+    LogicGate internalLogic;
 
     LinkedLists lista1=new LinkedLists();
 
@@ -126,19 +128,23 @@ public class Main extends Application {
                            double selectedX = valid_X(mousePosX);
                            double selectedY = valid_Y(mousePosY);
 
+
                             System.out.println("SelecX: "+selectedX);
                             System.out.println("SelecY: "+selectedY);
 
-                           if(selectedX < 577 && selectedY < 635) {
-                               //placeImage(imagen, selectedX, selectedY);
-                               GraphicGate gate1 = new GraphicGate(imagen,2,selectedX,selectedY);
-                               center.getChildren().addAll(gate1.CreateGate());
+                           if(selectedX < 583 && selectedY < 635) {
+                               LogicGate logicGate = new LogicGate(inputAmount);
+                               internalLogic = logicGate;
+
+                               GraphicGate newGate = new GraphicGate(imagen,inputAmount,selectedX,selectedY,internalLogic);
+                               center.getChildren().addAll(newGate.CreateGate());
+
+                               System.out.println("Gate ID: " + logicGate.gateID);
+
                            }
                            else{
                                System.out.println("Fuera del rango");
                            }
-
-
 
                         }
                     });
@@ -160,10 +166,10 @@ public class Main extends Application {
         readyBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                LogicGate comp0 = new LogicGate();
-                LogicGate comp1 = new LogicGate();
-                LogicGate comp2 = new LogicGate();
-                LogicGate comp3 = new LogicGate();
+                LogicGate comp0 = new LogicGate(inputAmount);
+                LogicGate comp1 = new LogicGate(inputAmount);
+                LogicGate comp2 = new LogicGate(inputAmount);
+                LogicGate comp3 = new LogicGate(inputAmount);
 
                 comp1.connection(comp2);
                 comp3.connection(comp2);
@@ -190,7 +196,7 @@ public class Main extends Application {
    }
 
    public double valid_X (double value){
-        if (value <= 577){
+        if (value <= 583){
             if(value <= 410){
                 return value;
 

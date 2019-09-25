@@ -86,16 +86,16 @@ public class PartsWn {
         readyBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                LogicGate comp0 = new LogicGate();
-                LogicGate comp1 = new LogicGate();
-                LogicGate comp2 = new LogicGate();
-                LogicGate comp3 = new LogicGate();
+                //LogicGate comp0 = new LogicGate(in);
+                //LogicGate comp1 = new LogicGate();
+                //LogicGate comp2 = new LogicGate();
+                //LogicGate comp3 = new LogicGate();
 
-                comp1.connection(comp2);
-                comp3.connection(comp2);
+                //comp1.connection(comp2);
+                //comp3.connection(comp2);
 
-                LogicGate a = (LogicGate) comp2.connections.get(0);
-                System.out.println(a.gateID);
+                //LogicGate a = (LogicGate) comp2.connections.get(0);
+                //System.out.println(a.gateID);
 
             }
         });
