@@ -13,6 +13,7 @@ public class GraphicGate {
     private Image gateImage;
     private int inputAmount;
     private static boolean btnClicked = false;
+    public static String firstID;
     public static LogicGate transferGate = null;
     public static LogicGate receiverGate = null;
     public LogicGate currentLogic ;
@@ -89,17 +90,24 @@ public class GraphicGate {
             if (this.btnClicked == false){
                 this.btnClicked = true;
                 receiverGate = this.currentLogic;
+                firstID = ID;
             }
             else{
-                receiverGate = this.currentLogic;
-                transferGate.connection(receiverGate);
+                if (firstID == "O") {
+                    receiverGate = this.currentLogic;
+                    transferGate.connection(receiverGate);
 
-                LogicGate test1 = (LogicGate) receiverGate.connections.getFirst().getInfo();
-                System.out.println("Gate ID conn: " +  test1.gateID);
+                    LogicGate test1 = (LogicGate) receiverGate.connections.getFirst().getInfo();
+                    System.out.println("Gate ID conn: " + test1.gateID);
 
+                }
+                else {
+                    System.out.println("Debe conectar output con input");
+                }
                 transferGate = null;
                 receiverGate = null;
                 btnClicked = false;
+                firstID = null;
             }
 
         }
@@ -109,17 +117,25 @@ public class GraphicGate {
             if (this.btnClicked == false){
                 this.btnClicked = true;
                 this.transferGate = currentLogic;
+                firstID = ID;
             }
             else{
-                transferGate = currentLogic;
-                this.transferGate.connection(receiverGate);
+                if(firstID == "I") {
+                    transferGate = currentLogic;
+                    transferGate.connection(receiverGate);
 
-                LogicGate test1 = (LogicGate) receiverGate.connections.getFirst().getInfo();
-                System.out.println("Gate ID: " +  test1.gateID);
+                    LogicGate test1 = (LogicGate) receiverGate.connections.getFirst().getInfo();
+                    System.out.println("Gate ID: " + test1.gateID);
+
+                }
+                else {
+                    System.out.println("Debe conectar output con input");
+                }
 
                 transferGate = null;
                 receiverGate = null;
                 btnClicked = false;
+                firstID = null;
             }
 
         }
