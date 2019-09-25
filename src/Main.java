@@ -43,7 +43,7 @@ public class Main extends Application {
     Image xorImage = new Image("images/xor.png");
     double mousePosX;
     double mousePosY;
-    int inputAmount = 3;
+    int inputAmount = 2;
     LogicGate internalLogic;
 
     LinkedLists lista1=new LinkedLists();
@@ -129,14 +129,11 @@ public class Main extends Application {
                            double selectedY = valid_Y(mousePosY);
 
 
-                            System.out.println("SelecX: "+selectedX);
-                            System.out.println("SelecY: "+selectedY);
-
                            if(selectedX < 583 && selectedY < 635) {
                                LogicGate logicGate = new LogicGate(inputAmount);
                                internalLogic = logicGate;
 
-                               GraphicGate newGate = new GraphicGate(imagen,inputAmount,selectedX,selectedY,internalLogic);
+                               GraphicGate newGate = new GraphicGate(imagen,inputAmount,selectedX,selectedY,internalLogic, center);
                                center.getChildren().addAll(newGate.CreateGate());
 
                                System.out.println("Gate ID: " + logicGate.gateID);

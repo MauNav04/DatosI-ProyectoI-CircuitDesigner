@@ -1,13 +1,17 @@
 package Interfaz;
 
+import Estructuras.LinkedLists;
 import Logica.LogicGate;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
+import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 
 public class GraphicGate {
     private Image gateImage;
@@ -17,15 +21,21 @@ public class GraphicGate {
     public static LogicGate transferGate = null;
     public static LogicGate receiverGate = null;
     public LogicGate currentLogic ;
+    private Pane window;
     public double Coord_X;
     public double Coord_Y;
+    public static boolean connectionComplete = false;
+    public static LinkedLists CoordsPnt1 = new LinkedLists();
+    public static LinkedLists CoordsPnt2 = new LinkedLists();
 
-    public GraphicGate(Image image, int inputs, double coord_X, double coord_Y, LogicGate logic){
+
+    public GraphicGate(Image image, int inputs, double coord_X, double coord_Y, LogicGate logic, Pane window){
         this.gateImage = image;
         this.inputAmount = inputs;
         this.Coord_X = coord_X;
         this.Coord_Y = coord_Y;
         this.currentLogic = logic;
+        this.window = window;
     }
 
     public Group CreateGate(){
@@ -33,7 +43,6 @@ public class GraphicGate {
         Group group = new Group();
 
         ImageView image = new ImageView(this.gateImage);
-
 
         int ancho = 42;
         int total = ancho/inputAmount;
@@ -48,8 +57,22 @@ public class GraphicGate {
             button.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent event) {
+
                     System.out.println("Button Clicked !!");
+
+                    if(btnClicked == false) {
+
+                        CoordsPnt1.lastInsert(button.getLayoutX() + Coord_X);
+                        CoordsPnt1.lastInsert(button.getLayoutY() + Coord_Y);
+                    }
+                    else{
+                        CoordsPnt2.lastInsert(button.getLayoutX() + Coord_X);
+                        CoordsPnt2.lastInsert(button.getLayoutY() + Coord_Y);
+                    }
+
                     ConnectionManager(button.getId());
+
+
                 }
             });
 
@@ -68,7 +91,24 @@ public class GraphicGate {
             @Override
             public void handle(ActionEvent event) {
                 System.out.println("Button Clicked !!");
+
+                if(btnClicked == false) {
+
+                    CoordsPnt1.lastInsert(outBtn.getLayoutX() + Coord_X);
+                    CoordsPnt1.lastInsert(outBtn.getLayoutY() + Coord_Y);
+
+                }
+                else{
+                    CoordsPnt2.lastInsert(outBtn.getLayoutX() + Coord_X);
+                    CoordsPnt2.lastInsert(outBtn.getLayoutY() + Coord_Y);
+                }
+
                 ConnectionManager(outBtn.getId());
+
+                event.getSource();
+
+
+
             }
         });
 
@@ -91,18 +131,21 @@ public class GraphicGate {
                 this.btnClicked = true;
                 receiverGate = this.currentLogic;
                 firstID = ID;
+
             }
             else{
                 if (firstID == "O") {
                     receiverGate = this.currentLogic;
                     transferGate.connection(receiverGate);
 
-                    LogicGate test1 = (LogicGate) receiverGate.connections.getFirst().getInfo();
-                    System.out.println("Gate ID conn: " + test1.gateID);
-
+                    System.out.println("Conexión completada exitosamente!");
+                    LineCreator(window, (double) CoordsPnt1.get(0), (double)CoordsPnt1.get(1), (double)CoordsPnt2.get(0), (double)CoordsPnt2.get(1));
                 }
+
                 else {
                     System.out.println("Debe conectar output con input");
+                    CoordsPnt1 = null;
+                    CoordsPnt2 = null;
                 }
                 transferGate = null;
                 receiverGate = null;
@@ -124,22 +167,39 @@ public class GraphicGate {
                     transferGate = currentLogic;
                     transferGate.connection(receiverGate);
 
-                    LogicGate test1 = (LogicGate) receiverGate.connections.getFirst().getInfo();
-                    System.out.println("Gate ID: " + test1.gateID);
+                    System.out.println("Conexión completada exitosamente!");
+                    LineCreator(window, (double) CoordsPnt1.get(0), (double)CoordsPnt1.get(1), (double)CoordsPnt2.get(0), (double)CoordsPnt2.get(1));
+
 
                 }
                 else {
                     System.out.println("Debe conectar output con input");
+                    CoordsPnt1 = null;
+                    CoordsPnt2 = null;
                 }
 
                 transferGate = null;
                 receiverGate = null;
                 btnClicked = false;
                 firstID = null;
+
             }
 
         }
 
+    }
+
+    public void LineCreator (Pane window, double X1, double Y1, double X2, double Y2 ){
+        Canvas canvas = new Canvas(500, 600);
+        GraphicsContext gc = canvas.getGraphicsContext2D();
+        gc.strokeLine(X1, Y1, X2, Y2);
+        gc.setStroke(Color.ORANGE);
+
+        window.getChildren().add(canvas);
+
+        CoordsPnt1 = new LinkedLists();
+        CoordsPnt2 = new LinkedLists();
+        connectionComplete = false;
 
     }
 
