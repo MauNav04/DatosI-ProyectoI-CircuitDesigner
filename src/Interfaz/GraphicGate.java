@@ -12,6 +12,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Line;
 
 public class GraphicGate {
     private Image gateImage;
@@ -107,8 +108,6 @@ public class GraphicGate {
 
                 event.getSource();
 
-
-
             }
         });
 
@@ -190,12 +189,14 @@ public class GraphicGate {
     }
 
     public void LineCreator (Pane window, double X1, double Y1, double X2, double Y2 ){
-        Canvas canvas = new Canvas(500, 600);
-        GraphicsContext gc = canvas.getGraphicsContext2D();
-        gc.strokeLine(X1, Y1, X2, Y2);
-        gc.setStroke(Color.ORANGE);
+        Line line = new Line();
+        line.setStartX(X1);
+        line.setStartY(Y1);
+        line.setEndX(X2);
+        line.setEndY(Y2);
+        //line.setStroke(Color.ORANGE);
 
-        window.getChildren().add(canvas);
+        window.getChildren().add(line);
 
         CoordsPnt1 = new LinkedLists();
         CoordsPnt2 = new LinkedLists();
