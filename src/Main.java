@@ -3,7 +3,7 @@ import Interfaz.DragAndDrop;
 import Interfaz.GraphicGate;
 import Interfaz.PartsWn;
 
-import Logica.LogicGate;
+import Logica.*;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -47,6 +47,7 @@ public class Main extends Application {
     LogicGate internalLogic;
 
     LinkedLists lista1=new LinkedLists();
+    LinkedLists listaOrden=new LinkedLists();
 
 
     @Override
@@ -95,7 +96,15 @@ public class Main extends Application {
         this.lista1.insert(nandImage);
         this.lista1.insert(orImage);
         this.lista1.insert(andImage);
-        System.out.println("Si lo ejecuta" + "-fx-background-color: #336699;");
+        System.out.println("Si lo ejecuta");
+
+        this.listaOrden.insert("Xo");
+        this.listaOrden.insert("Xn");
+        this.listaOrden.insert("Not");
+        this.listaOrden.insert("Nor");
+        this.listaOrden.insert("Na");
+        this.listaOrden.insert("Or");
+        this.listaOrden.insert("An");
 
         VBox vbox = new VBox();
         vbox.setPrefSize(width, height);
@@ -110,6 +119,7 @@ public class Main extends Application {
             iv.setImage(imagen);
 
             Button button = new Button();
+            button.setId((String) listaOrden.get(i));
             button.setGraphic(iv);
             button.setPrefSize(150,80);
 
@@ -130,13 +140,31 @@ public class Main extends Application {
 
 
                            if(selectedX < 583 && selectedY < 635) {
-                               LogicGate logicGate = new LogicGate(inputAmount);
-                               internalLogic = logicGate;
+                               //LogicGate logicGate = new LogicGate(inputAmount);
+                               //internalLogic = logicGate;
+
+
+                               if(button.getId() == "An"){
+                                   GateFactory factory = new GateFactory();
+                                   ApplicationF app  = new ApplicationF(factory,"and");
+                                   app.newGate();
+
+                               }
+                               else { if (button.getId() == "Or") {
+                                   GateFactory factory = new GateFactory();
+                                   ApplicationF app  = new ApplicationF(factory,"or");
+                                   OrGate gate = (OrGate)app.newGate();
+                                   System.out.println(gate.gateID);
+
+                                   }
+                               }
+
+
 
                                GraphicGate newGate = new GraphicGate(imagen,inputAmount,selectedX,selectedY,internalLogic, center);
                                center.getChildren().addAll(newGate.CreateGate());
 
-                               System.out.println("Gate ID: " + logicGate.gateID);
+                               //System.out.println("Gate ID: " + logicGate.gateID);
 
                            }
                            else{
@@ -168,8 +196,8 @@ public class Main extends Application {
                 LogicGate comp2 = new LogicGate(inputAmount);
                 LogicGate comp3 = new LogicGate(inputAmount);
 
-                comp1.connection(comp2);
-                comp3.connection(comp2);
+                comp1.connection(comp2,inputAmount);
+                comp3.connection(comp2,inputAmount);
 
                 LogicGate a = (LogicGate) comp2.connections.get(0);
                 System.out.println(a.gateID);

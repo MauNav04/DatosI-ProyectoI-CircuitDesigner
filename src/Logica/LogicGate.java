@@ -11,7 +11,7 @@ public class LogicGate {
     public String outputID="";
     public LinkedLists connections = new LinkedLists();
     public LinkedLists inputs = new LinkedLists();
-    public boolean output = false;
+    public boolean output;
 
     public LogicGate(int inputAmount){
         gateID = "G" + Integer.toString(this.gateCont);
@@ -28,15 +28,30 @@ public class LogicGate {
         outputID = "O" + Integer.toString(outputCont);
         this.outputCont ++;
 
-
     }
 
-    public void connection(LogicGate receiverGate){
+    public void connection(LogicGate receiverGate, int inputAmount){
         receiverGate.connections.lastInsert(this);
     }
 
-    public void value(LogicGate receiverGate){
+    public void connectValue(LogicGate receiverGate){
         receiverGate.inputs.lastInsert(this.output);
+    }
+
+    public boolean getValue(){
+        return this.output;
+    }
+
+    public void setValue(boolean value){
+        this.output = value;
+    }
+
+    public boolean validInputs(int inputAmout){
+        System.out.println("INPUTS" + inputs.getSize());
+        if (inputs.getSize() == inputAmout){
+            return true;
+        }
+        else{return  false;}
     }
 
     /*
