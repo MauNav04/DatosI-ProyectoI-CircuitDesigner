@@ -135,7 +135,7 @@ public class GraphicGate {
             else{
                 if (firstID == "O") {
                     receiverGate = this.currentLogic;
-                    transferGate.connection(receiverGate,this.inputAmount);
+                    transferGate.connection(receiverGate);
 
                     System.out.println("Conexión completada exitosamente!");
                     LineCreator(window, (double) CoordsPnt1.get(0), (double)CoordsPnt1.get(1), (double)CoordsPnt2.get(0), (double)CoordsPnt2.get(1));
@@ -164,7 +164,7 @@ public class GraphicGate {
             else{
                 if(firstID == "I") {
                     transferGate = currentLogic;
-                    transferGate.connection(receiverGate,inputAmount);
+                    transferGate.connection(receiverGate);
 
                     System.out.println("Conexión completada exitosamente!");
                     LineCreator(window, (double) CoordsPnt1.get(0), (double)CoordsPnt1.get(1), (double)CoordsPnt2.get(0), (double)CoordsPnt2.get(1));
