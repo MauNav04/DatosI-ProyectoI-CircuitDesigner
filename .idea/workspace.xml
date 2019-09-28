@@ -143,7 +143,7 @@
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/Logica/GateInterface.java</url>
           <line>12</line>
-          <properties class="Logica.GateInterface" method="getInput2">
+          <properties class="Logica.GateInterface">
             <option name="EMULATED" value="true" />
           </properties>
           <option name="timeStamp" value="1" />

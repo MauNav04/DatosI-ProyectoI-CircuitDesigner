@@ -39,6 +39,13 @@ public class GraphicGate {
         this.window = window;
     }
 
+    /**
+     * Crea un nuevo grupo con todos los elementos de necesarios para el
+     * funcionamiento de una compuerta, coloca la imagen de la compuerta
+     * correspondiente y sobre ella coloca botones para los inputs y para
+     * los outputs.
+     * @return
+     */
     public Group CreateGate(){
 
         Group group = new Group();
@@ -123,6 +130,14 @@ public class GraphicGate {
 
     }
 
+    /**
+     * Se encarga de verificar si se hace una conexión presionando los botones
+     * de las compuertas, verifica que no se conecten entradas con entradas o
+     * salidas con salidas, además, se encarga de determinar cuál es la compuerta
+     * que transmite y cuál es la que recibe. Una ves que posee esta información
+     * llama al método creador de lineas.
+     * @param ID
+     */
     public void ConnectionManager(String ID){
         if (ID == "I"){
             System.out.println("...Is an input");
@@ -188,6 +203,15 @@ public class GraphicGate {
 
     }
 
+    /**
+     * Su funcionalidad es la de graficar una línea que represente la conexión
+     * entre compuertas con las coordenadas X, Y que recibe como entradas.
+     * @param window
+     * @param X1
+     * @param Y1
+     * @param X2
+     * @param Y2
+     */
     public void LineCreator (Pane window, double X1, double Y1, double X2, double Y2 ){
         Line line = new Line();
         line.setStartX(X1);

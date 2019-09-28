@@ -38,9 +38,6 @@ public class DragAndDrop extends Application {
         contentPane = new StackPane();
         Scene scene = new Scene(layout, 800, 800, Color.WHITE);
 
-
-
-
         contentPane.setOnDragOver(new EventHandler<DragEvent>() {
             @Override
             public void handle(final DragEvent event) {

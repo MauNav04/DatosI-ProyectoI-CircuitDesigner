@@ -1,17 +1,11 @@
 import Estructuras.LinkedLists;
-import Interfaz.DragAndDrop;
 import Interfaz.GraphicGate;
-import Interfaz.PartsWn;
 
 import Logica.LogicGate;
 import javafx.application.Application;
-import javafx.application.Platform;
 import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
-import javafx.scene.Group;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Menu;
@@ -22,11 +16,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.*;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-
-import java.util.Collection;
 
 
 public class Main extends Application {
@@ -48,7 +39,11 @@ public class Main extends Application {
 
     LinkedLists lista1=new LinkedLists();
 
-
+    /**
+     * @param primaryStage
+     * @throws Exception
+     * Inicializa la interfaz y crea la ventana principal
+     */
     @Override
     public void start(Stage primaryStage) throws Exception {
         window = primaryStage;
@@ -87,6 +82,15 @@ public class Main extends Application {
 
     }
 
+    /**
+     * @param width
+     * @param height
+     * @param spacing
+     * @param color
+     * @return
+     *
+     * Crea un VBox can las imagenes y botones de las compuertas
+     */
     public VBox addVBox(int width, int height, int spacing, String color) {
         this.lista1.insert(xorImage);
         this.lista1.insert(xnorImage);
@@ -161,6 +165,10 @@ public class Main extends Application {
         readyBtn.setPrefSize(150, 20);
 
         readyBtn.setOnAction(new EventHandler<ActionEvent>() {
+            /**
+             * Crea compuertas y prueba que las conexiones funcionan
+             * @param event
+             */
             @Override
             public void handle(ActionEvent event) {
                 LogicGate comp0 = new LogicGate(inputAmount);
@@ -183,6 +191,13 @@ public class Main extends Application {
         return vbox;
     }
 
+    /**
+     * Coloca una imagen en una posición determinada
+     * @param image
+     * @param coordX
+     * @param coordY
+     * @return
+     */
    public ImageView placeImage (Image image, double coordX, double coordY){
        ImageView newIV = new ImageView(image);
        newIV.setX(coordX);
@@ -192,6 +207,11 @@ public class Main extends Application {
        return newIV;
    }
 
+    /**
+     * Valida que se se haya dado un click dentro del rango X permitido
+     * @param value
+     * @return
+     */
    public double valid_X (double value){
         if (value <= 583){
             if(value <= 410){
@@ -209,6 +229,11 @@ public class Main extends Application {
 
    }
 
+    /**
+     * Valida que se se haya dado un click dentro del rango Y permitido
+     * @param value
+     * @return
+     */
    public double valid_Y (double value){
        if (value <= 635){
            if(value <= 550){

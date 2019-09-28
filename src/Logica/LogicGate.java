@@ -31,6 +31,13 @@ public class LogicGate {
 
     }
 
+    /**
+     * Crea una conexión lógica interna entre compuertas.
+     * Cada compuerta internamente posee una lista llamada conexiones,
+     * la compuerta que transmite se añadirá a la lista de conexiones
+     * de la compuerta que recibe.
+     * @param receiverGate
+     */
     public void connection(LogicGate receiverGate){
         receiverGate.connections.lastInsert(this);
     }
@@ -39,14 +46,4 @@ public class LogicGate {
         receiverGate.inputs.lastInsert(this.output);
     }
 
-    /*
-    public void movement(){
-
-    }
-
-
-    public String showList(){
-
-    }
-    */
 }
